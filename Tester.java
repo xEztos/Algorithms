@@ -1,15 +1,18 @@
 public class Tester{
 	public static void main(String[] args){
 		int testRuns = 20;
-
 		for(int i = 0; i < testRuns; i++){
+			long startTime = System.currentTimeMillis();
 			int[] testArray = randomIntegerArray(9999);
-			// System.out.println(isSorted(testArray));
+			System.out.println(isSorted(testArray));
 			// System.out.println(intArrayToString(testArray));
 
-			int[] resultArray = IntegerAlgorithms.intSelectionSort(testArray);
+			// int[] resultArray = IntegerAlgorithms.intSelectionSort(testArray);
 			// System.out.println(intArrayToString(resultArray));
-			System.out.println(isSorted(resultArray));
+			// System.out.println(isSorted(resultArray));
+			long endTime = System.currentTimeMillis();
+			System.out.println("Time: " + (endTime - startTime) + " milliseconds");
+			System.out.println("Time: " + (endTime-startTime)/1000.0 + " seconds");
 		}
 	}
 
