@@ -2,17 +2,25 @@ public class Tester{
 	public static void main(String[] args){
 		int testRuns = 20;
 		for(int i = 0; i < testRuns; i++){
-			long startTime = System.currentTimeMillis();
-			int[] testArray = randomIntegerArray(9999);
+			int[] testArray = randomIntegerArray(14);
 			System.out.println(isSorted(testArray));
-			// System.out.println(intArrayToString(testArray));
+			System.out.println(intArrayToString(testArray));
+
+
+			long startTime = System.currentTimeMillis();
 
 			// int[] resultArray = IntegerAlgorithms.intSelectionSort(testArray);
+			dHeap resultHeap = new dHeap(testArray, 2);
+
+			long endTime = System.currentTimeMillis();
+
+			System.out.println(resultHeap);
 			// System.out.println(intArrayToString(resultArray));
 			// System.out.println(isSorted(resultArray));
-			long endTime = System.currentTimeMillis();
+
 			System.out.println("Time: " + (endTime - startTime) + " milliseconds");
 			System.out.println("Time: " + (endTime-startTime)/1000.0 + " seconds");
+			System.out.println();
 		}
 	}
 
