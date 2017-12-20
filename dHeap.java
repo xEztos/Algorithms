@@ -23,7 +23,7 @@ public class dHeap{
 		@param d the max number of children per root
 		@return a dHeap object
 	*/
-	public dHeap heapify(int[] intArray, int d){
+	public dHeap(int[] intArray, int d){
 		size = intArray.length;
 		heap = intArray;
 		this.d = d;
@@ -31,7 +31,21 @@ public class dHeap{
 		for(int i = begin; i >= 0; i--){
 			sift_down(i);
 		}
-		return this;
+	}
+
+	/**
+		returns a string representation of the array representation of the heap
+		@return a string representation of the array representation of the heap
+	*/
+	public String toString(){
+		String ret = "[";
+		for(int i = 0; i < size; i++){
+			ret = ret + heap[i];
+			if(i != size-1)
+				ret = ret + ", ";
+		}
+		ret = ret + "]";
+		return ret;
 	}
 
 	/**
@@ -41,7 +55,7 @@ public class dHeap{
 	private void sift_down(int subRoot){
 		int maxIndex = subRoot;
 
-		for(int i = 1; i <= d && subRoot+1 < size; i++){
+		for(int i = 1; i <= d && subRoot+i < size; i++){
 			if(heap[maxIndex] < heap[subRoot+i])
 				maxIndex = subRoot+i;
 		}
