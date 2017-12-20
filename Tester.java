@@ -1,27 +1,27 @@
 public class Tester{
 	public static void main(String[] args){
-		int testRuns = 5;
+		int testRuns = 20;
 
 		for(int i = 0; i < testRuns; i++){
-			int[] testArray = randomIntegerArray(10);
-			System.out.println(isSorted(testArray));
-			System.out.println(intArrayToString(testArray));
+			int[] testArray = randomIntegerArray(9999);
+			// System.out.println(isSorted(testArray));
+			// System.out.println(intArrayToString(testArray));
 
 			int[] resultArray = IntegerAlgorithms.intBubbleSort(testArray);
-			System.out.println(intArrayToString(resultArray));
+			// System.out.println(intArrayToString(resultArray));
 			System.out.println(isSorted(resultArray));
 		}
 	}
 
 	/**
-		populates and returns an integer array of specified length with numbers between [0,100)
+		populates and returns an integer array of specified length with numbers between [-100,100]
 		@param length the specified length of the array
-		@return an integer array of specified length populated with numbers between [0,100)
+		@return an integer array of specified length populated with numbers between [-100,100]
 	*/
 	static int[] randomIntegerArray(int length){
 		int[] ret = new int[length];
 		for(int i = 0; i < length; i++){
-			ret[i] = (int) (Math.random()*100.0);
+			ret[i] = (int)(Math.random()*201.0) - 100;
 		}
 		return ret;
 	}
