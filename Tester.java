@@ -7,7 +7,7 @@ public class Tester{
 			// System.out.println(isSorted(testArray));
 			// System.out.println(intArrayToString(testArray));
 
-			int[] resultArray = IntegerAlgorithms.intBubbleSort(testArray);
+			int[] resultArray = IntegerAlgorithms.intSelectionSort(testArray);
 			// System.out.println(intArrayToString(resultArray));
 			System.out.println(isSorted(resultArray));
 		}
