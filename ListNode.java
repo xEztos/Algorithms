@@ -121,9 +121,10 @@ class ListNode{
 	 *	@return a string representation of this node
 	 */
 	public String toString(){
-		String ret = "NodeID: " + this.id;
-		String ret = ret + ",  Distance: " + this.distance;
-		String ret = ret + ",  Cost: " + this.cost;
+		String ret = "";
+		ret = "NodeID: " + this.id;
+		ret = ret + ",  Distance: " + this.distance;
+		ret = ret + ",  Cost: " + this.cost;
 		// String ret = ret + ",  " + this.nextNode;
 
 		return ret;

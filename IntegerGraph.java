@@ -23,7 +23,7 @@ public class IntegerGraph{
 	 *	@return true if the edge was successfuly added or false if an edge already exists
 	 */
 	public boolean addEdge(int nodeA, int nodeB, int distance, int cost){
-		graph[nodeA].addNode(nodeB, distance, cost);
+		return graph[nodeA].addNode(nodeB, distance, cost);
 	}
 
 	/**

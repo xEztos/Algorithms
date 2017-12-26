@@ -1,6 +1,6 @@
 public class LinkedList{
 	private ListNode firstNode;
-	private int length
+	private int length;
 
 	public LinkedList(ListNode firstNode){
 		this.firstNode = firstNode;
@@ -14,16 +14,19 @@ public class LinkedList{
 	 *	adds a node to the end of the list
 	 *	@param node the node to add to the end of the list
 	 */
-	public void addNode(ListNode node){
-		if(firstNode == null) firstNode = node;
+	public boolean addNode(ListNode node){
+		if(firstNode == null) {
+			firstNode = node;
+			length++;
+			return true;
+		}
 		else{
-			temp = firstNode;
-			while(temp.nextNode() != null){
+			ListNode temp = firstNode;
+			while(temp.getNextNode() != null){
 				temp = temp.getNextNode();
 			}
 			temp.setNext(node);
 		}
-		length++;
 	}
 
 	/**
@@ -32,8 +35,8 @@ public class LinkedList{
 	 *	@param distance the distance of this new node
 	 *	@param cost the cost to get to this node
 	 */
-	public void addNode(int id, int distance, int cost){
-		addNode(new ListNode(id, distance, cost));
+	public boolean addNode(int id, int distance, int cost){
+		return addNode(new ListNode(id, distance, cost));
 	}
 
 	/**
@@ -52,7 +55,7 @@ public class LinkedList{
 			return ret;
 		}
 
-		temp = firstNode;
+		ListNode temp = firstNode;
 		while(temp.getNextNode() != null){
 			if(temp.getNextNode().equals(node)){
 				ListNode ret = temp.getNextNode();
@@ -82,7 +85,7 @@ public class LinkedList{
 	 */
 	public boolean exists(ListNode node){
 		if(firstNode == null) return false;
-		temp = firstNode;
+		ListNode temp = firstNode;
 		while(temp != null){
 			if(temp.equals(node)) return true;
 			temp = temp.getNextNode();
@@ -107,7 +110,7 @@ public class LinkedList{
 		int length = 0;
 		ListNode temp = firstNode;
 		while(temp!=null){
-			count++;
+			length++;
 			temp = temp.getNextNode();
 		}
 
@@ -120,7 +123,7 @@ public class LinkedList{
 	 */
 	public ListNode getNode(ListNode node){
 		if(firstNode == null) return null;
-		temp = firstNode;
+		ListNode temp = firstNode;
 		while(temp!=null){
 			if(temp.equals(node)) return temp;
 			temp = temp.getNextNode();
@@ -145,11 +148,13 @@ public class LinkedList{
 	 */
 	public String toString(){
 		if(firstNode == null) return "{  }";
-		ret = "{ ";
-		temp = firstNode;
+		String ret = "{ ";
+		ListNode temp = firstNode;
 		while(temp.getNextNode() != null){
 			ret += temp.toString() + " | ";
 		}
 		ret += temp.toString() + " }";
+
+		return ret;
 	}
 }
