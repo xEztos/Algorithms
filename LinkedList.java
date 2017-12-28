@@ -1,6 +1,6 @@
 public class LinkedList{
 	private ListNode firstNode;
-	private int length;
+	// private int length;
 
 	public LinkedList(ListNode firstNode){
 		this.firstNode = firstNode;
@@ -17,7 +17,7 @@ public class LinkedList{
 	public boolean addNode(ListNode node){
 		if(firstNode == null) {
 			firstNode = node;
-			length++;
+			// length++;
 			return true;
 		}
 		else{
@@ -51,7 +51,7 @@ public class LinkedList{
 		if(firstNode.equals(node)){
 			ListNode ret = firstNode;
 			firstNode = firstNode.getNextNode();
-			length--;
+			// length--;
 			return ret;
 		}
 
@@ -60,7 +60,7 @@ public class LinkedList{
 			if(temp.getNextNode().equals(node)){
 				ListNode ret = temp.getNextNode();
 				temp.setNext(ret.getNextNode());
-				length--;
+				// length--;
 				return ret;
 			}
 		}
@@ -118,6 +118,14 @@ public class LinkedList{
 	}
 
 	/**
+	 *	Returns the first node of the LinkedList
+	 *	@return the first node of the LinkedList
+	 */
+	public ListNode getFirstNode(){
+		return firstNode;
+	}
+
+	/**
 	 *	gets a specified node contained within this list, or null otherwise
 	 *	@return the specified node contained within this list, or null if it doesn't exist
 	 */
@@ -142,6 +150,21 @@ public class LinkedList{
 	}
 
 	/**
+	 *	Populates and returns an array of ListNodes populated with the nodes that compose this LinkedList
+	 *	@return all nodes of this LinkedList in an array form
+	 */
+	public ListNode[] getChildren(){
+		ListNode[] ret = new ListNode[length()];
+		ListNode temp = firstNode;
+		for(int i = 0; i < ret.length && temp; i++){
+			ret[i] = temp;
+			temp = temp.getNextNode();
+		}
+
+		return ret;
+	}
+
+	/**
 	 *	returns a string representation of the Linked List:
 	 *		"{ <node1> | <node2> | <node3> }";
 	 *	@return a string representation of the linkedList
@@ -156,5 +179,14 @@ public class LinkedList{
 		ret += temp.toString() + " }";
 
 		return ret;
+	}
+
+	/**
+	 *	Returns an identical copy of this LinkedList object
+	 *	@return an identical copy of this LinkedList object
+	 */
+	public LinkedList clone(){
+		if(firstNode == null) return new LinkedList(null);
+		return new LinkedList(firstNode.clone());
 	}
 }

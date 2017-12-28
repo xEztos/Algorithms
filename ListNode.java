@@ -129,4 +129,13 @@ class ListNode{
 
 		return ret;
 	}
+
+	/**
+	 *	Returns a copy of this ListNode and a copy of the proceeding nodes
+	 *	@return a copy of this ListNode and a copy of the proceeding nodes
+	 */
+	public ListNode clone(){
+		if(nextNode == null) return new ListNode(id, distance, cost, null);
+		return new ListNode(id, distance, cost, nextNode.clone());
+	}
 }
