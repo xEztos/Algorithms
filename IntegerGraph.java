@@ -75,11 +75,21 @@ public class IntegerGraph{
 		for(int i = 0; i < len-1; i++){
 			//iterates through each starting node in the graph
 			for(int j = 0; j < graph.length; j++){
+
+				if(ret[j] == Integer.MAX_VALUE) // if ret[j] is infinity
+					continue;
+
 				ListNode temp = graph[j].getFirstNode();
 				while(temp != null){
-					if()
+					int sum = ret[j] + temp.getDistance();
+					if(sum < ret[temp.getID()])
+						ret[temp.getID()] = sum;
+
+					temp = temp.getNextNode();
 				}
 			}
 		}
+
+		return ret;
 	}
 }
