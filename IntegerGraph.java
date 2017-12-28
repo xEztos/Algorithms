@@ -53,4 +53,33 @@ public class IntegerGraph{
 	public boolean hasCycles(){
 		return true;
 	}
+
+	/**
+	 *	Runs a Bellman-Ford algorithm on the graph starting from a given node, and returns
+	 *	an array of integers containing the cost to get from the start to the corresponding node
+	 *	@param startNode the integer ID for the node to start on
+	 *	@return an integer array containing the minimum cost it would take to get to each node from a specific start
+	 */
+	public int[] bellman_ford(int startNode){
+		int len = graph.length;
+		int[] ret = new int[len];
+
+		// initializes the returning array with "infinity" for all nodes but the starting nodeaa
+		for(int i = 0; i < ret.len; i++)
+			ret[i] = Integer.MAX_VALUE;
+		ret[startNode] = 0;
+
+		// the meat of the Bellman-Ford Algorithm
+
+		LinkedList[] tempList = graph[j].getChildren();
+		for(int i = 0; i < len-1; i++){
+			//iterates through each starting node in the graph
+			for(int j = 0; j < graph.length; j++){
+				ListNode temp = graph[j].getFirstNode();
+				while(temp != null){
+					if()
+				}
+			}
+		}
+	}
 }
