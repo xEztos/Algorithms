@@ -1,29 +1,38 @@
 public class Tester{
 	public static void main(String[] args){
-		int testRuns = 20;
+		int testRuns = 5;
 		for(int i = 0; i < testRuns; i++){
-			int[] testArray = randomIntegerArray(999999);
+			// int[] testArray = randomIntegerArray(999999);
 			// System.out.println(isSorted(testArray));
 			// System.out.println(intArrayToString(testArray));
 
 
-			long startTime = System.currentTimeMillis();
+			// long startTime = System.currentTimeMillis();
 
+			// BEGIN TEST BED
+			
 			// int[] resultArray = IntegerAlgorithms.intSelectionSort(testArray);
-			int[] resultArray = dHeap.heap_sort(testArray);
+			// int[] resultArray = dHeap.heap_sort(testArray);
 			// for(int j = 0; j < testArray.length; j++) testArray[i]++;
+			IntegerGraph testGraph = randomIntegerGraph(6, 12);
+			System.out.println(intArrayToString(testGraph.bellman_ford(0)));
+			if(testGraph.hasNegativeCycles()) System.out.println("PROBLEM");
 
-			long endTime = System.currentTimeMillis();
+
+			// END TEST BED
+
+			// long endTime = System.currentTimeMillis();
 			// System.out.println(intArrayToString(resultArray));
 			// System.out.println(isSorted(resultArray));
+			System.out.println(testGraph);
 
 
 			// if(isSorted(resultArray)){
-			if(true){
-				System.out.println("Time: " + (endTime-startTime)/1000.0 + " seconds");
-			}
-			else
-				System.out.println("FALSE: UNSORTED");
+			// if(true){
+			// 	System.out.println("Time: " + (endTime-startTime)/1000.0 + " seconds");
+			// }
+			// else
+			// 	System.out.println("FALSE: UNSORTED");
 			
 			// System.out.println();
 		}
@@ -39,6 +48,24 @@ public class Tester{
 		int[] ret = new int[length];
 		for(int i = 0; i < length; i++){
 			ret[i] = (int)(Math.random()*201.0) - 100;
+		}
+		return ret;
+	}
+
+	/**
+	 *	Creates and populates an IntegerGraph populated with a specified number of verticies and edges.
+	 *	@param verticies the number of verticies that will exist within the graph
+	 *	@param numEdges the number of edges to exist within the graph. The function will not work properly if the number is greater than verticies^verticies
+	 *	@return a new IntegerGraph object populated with a specified number of verticies and a specified number of random edges
+	 */
+	static IntegerGraph randomIntegerGraph(int verticies, int numEdges){
+		IntegerGraph ret = new IntegerGraph(verticies);
+		for(int i = 0; i < numEdges; i++){
+			int start = (int)(Math.random() * verticies);
+			int end = (int)(Math.random() * verticies);
+			int distance = (int)(Math.random()*21 - 10);
+			// int cost = 0;
+			ret.addEdge(start, end, distance);
 		}
 		return ret;
 	}
@@ -65,7 +92,7 @@ public class Tester{
 	 *	checks and returns if an array is sorted
 	 *	@param array the array to check if sorted or not
 	 *	@return @true if sorted, @false if not sorted
-	*/
+	 */
 	static boolean isSorted(int[] array){
 		boolean sorted = true;
 		for(int i = 1; i < array.length; i++){
