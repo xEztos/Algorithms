@@ -20,13 +20,14 @@ public class LinkedList{
 			// length++;
 			return true;
 		}
-		else{
-			ListNode temp = firstNode;
-			while(temp.getNextNode() != null){
-				temp = temp.getNextNode();
-			}
-			temp.setNext(node);
+		if(exists(node)) return false;
+
+		ListNode temp = firstNode;
+		while(temp.getNextNode() != null){
+			temp = temp.getNextNode();
 		}
+		temp.setNext(node);
+		return true;
 	}
 
 	/**
@@ -156,7 +157,7 @@ public class LinkedList{
 	public ListNode[] getChildren(){
 		ListNode[] ret = new ListNode[length()];
 		ListNode temp = firstNode;
-		for(int i = 0; i < ret.length && temp; i++){
+		for(int i = 0; i < ret.length && temp != null; i++){
 			ret[i] = temp;
 			temp = temp.getNextNode();
 		}
@@ -175,6 +176,7 @@ public class LinkedList{
 		ListNode temp = firstNode;
 		while(temp.getNextNode() != null){
 			ret += temp.toString() + " | ";
+			temp = temp.getNextNode();
 		}
 		ret += temp.toString() + " }";
 
