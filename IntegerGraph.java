@@ -122,12 +122,15 @@ public class IntegerGraph{
 	 *	@return true if a negative cycle exists and false if a negative cycle does not exisit
 	 */
 	public boolean hasNegativeCycles(){
-		int[] temp = bellman_ford(0);
-		for(int i = 0; i < graph.length; i++){
-			ListNode[] tempGraph = graph[i].getChildren();
-			for(int j = 0; j < tempGraph.length; j++){
-				if(temp[tempGraph[j].getID()] > temp[i] + tempGraph[j].getDistance() && temp[i] != Integer.MAX_VALUE)
-					return true;
+
+		for(int startNode = 0; startNode < graph.length; startNode++){
+			int[] temp = bellman_ford(startNode);
+			for(int i = 0; i < graph.length; i++){
+				ListNode[] tempGraph = graph[i].getChildren();
+				for(int j = 0; j < tempGraph.length; j++){
+					if(temp[tempGraph[j].getID()] > temp[i] + tempGraph[j].getDistance() && temp[i] != Integer.MAX_VALUE)
+						return true;
+				}
 			}
 		}
 

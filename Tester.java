@@ -1,6 +1,7 @@
 public class Tester{
 	public static void main(String[] args){
-		int testRuns = 5;
+		int testRuns = 99;
+		int count = 0;
 		for(int i = 0; i < testRuns; i++){
 			// int[] testArray = randomIntegerArray(999999);
 			// System.out.println(isSorted(testArray));
@@ -15,8 +16,11 @@ public class Tester{
 			// int[] resultArray = dHeap.heap_sort(testArray);
 			// for(int j = 0; j < testArray.length; j++) testArray[i]++;
 			IntegerGraph testGraph = randomIntegerGraph(6, 12);
-			System.out.println(intArrayToString(testGraph.bellman_ford(0)));
-			if(testGraph.hasNegativeCycles()) System.out.println("PROBLEM");
+			// System.out.println(intArrayToString(testGraph.bellman_ford(0)));
+			if(testGraph.hasNegativeCycles()){
+				count++;
+				System.out.println("NEGATIVE CYCLES");
+			}
 
 
 			// END TEST BED
@@ -36,6 +40,8 @@ public class Tester{
 			
 			// System.out.println();
 		}
+
+		System.out.println(count);
 	}
 
 
@@ -63,7 +69,7 @@ public class Tester{
 		for(int i = 0; i < numEdges; i++){
 			int start = (int)(Math.random() * verticies);
 			int end = (int)(Math.random() * verticies);
-			int distance = (int)(Math.random()*21 - 10);
+			int distance = (int)(Math.random()*21-5);
 			// int cost = 0;
 			ret.addEdge(start, end, distance);
 		}
